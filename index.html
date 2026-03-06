@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>До 8 марта, Соня!</title>
+    <style>
+        body {
+            background: #0a0f1e;
+            color: white;
+            font-family: 'Arial';
+            text-align: center;
+            padding-top: 50px;
+        }
+        .timer {
+            font-size: 4em;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 30px;
+        }
+        .name {
+            font-size: 5em;
+            color: #ffb6c1;
+            animation: glow 2s infinite;
+        }
+        @keyframes glow {
+            0%,100%{text-shadow:0 0 10px #ff69b4;}
+            50%{text-shadow:0 0 30px #ff1493;}
+        }
+    </style>
+</head>
+<body>
+    <div class="name">СОНЯ</div>
+    <h1>Таймер до восьмого марта</h1>
+    <div class="timer" id="timer"></div>
+    <p>❤️ Я тебя очень люблю ❤️</p>
+    
+    <script>
+        const target = new Date('2026-03-08T21:48:30').getTime();
+        
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = target - now;
+            
+            const days = Math.floor(diff / (1000*60*60*24));
+            const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+            const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+            const secs = Math.floor((diff % (1000*60)) / 1000);
+            
+            document.getElementById('timer').innerHTML = 
+                `${days}д ${hours}ч ${mins}м ${secs}с`;
+        }, 1000);
+    </script>
+</body>
+</html>
